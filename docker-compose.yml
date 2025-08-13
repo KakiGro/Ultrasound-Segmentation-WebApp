@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: kidney-segmentation-backend
+    container_name: ultrasound-segmentation-backend
     ports:
       - "8001:8001"
     volumes:
@@ -15,7 +15,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: kidney-segmentation-frontend
+    container_name: ultrasound-segmentation-frontend
     ports:
       - "3001:80"
     depends_on:
