@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kidney-segmentation-backend
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./backend:/app
+    networks:
+      - kidney-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kidney-segmentation-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    networks:
+      - kidney-network
+
+networks:
+  kidney-network:
+    driver: bridge
